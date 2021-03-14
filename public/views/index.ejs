@@ -1,0 +1,21 @@
+<%- include("header"); -%>
+<h1><%=today%></h1>
+<h4><%=greeting%></h4>
+<br><br>
+<div class="box">
+    <h5>Tasks</h5>
+    <div>
+        <% tasks.forEach(task => { %>
+            <form action="/delete" method="post">
+                <div>
+                <input onChange="this.form.submit()" value="<%=task._id%>" name="checkbox" type="checkbox"> <label class="task"><%=task.name%></label>
+                </div>
+            </form>
+        <%  }) %>
+        <form method="post">
+            <input class="next" type="text" name="task" placeholder="Task Name" autofocus autocomplete="off">
+            <button class="btn btn-sm btn-dark" type="submit" name="addTask">Add</button>
+        </form>
+    </div>
+</div>
+<%- include("footer"); -%>
